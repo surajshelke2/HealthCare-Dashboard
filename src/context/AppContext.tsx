@@ -1,44 +1,23 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-// Define the shape of the context data
-interface Patient {
-  name: string;
-  picture: string;
-  gender: string;
-  age: number;
-}
 
-interface AppContextType {
-  data: Patient[];
-  setData: React.Dispatch<React.SetStateAction<Patient[]>>;
-  saveData: (newPatient: Patient) => void;
-}
 
-// Create the context
-const AppContext = createContext<AppContextType | undefined>(undefined);
+// @ts-ignore 
+const AppContext = createContext();
 
-// Provider component
-export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [data, setData] = useState<Patient[]>([
-    {
-      name: 'Emily Williams',
-      picture: 'https://via.placeholder.com/150', // Replace with actual image URL
-      gender: 'Female',
-      age: 18,
-    },
-  ]);
-
-  // Function to save new patient data
-  const saveData = (newPatient: Patient) => {
-    setData((prevData) => [...prevData, newPatient]);
-  };
-
+//@ts-ignore
+export const AppProvider = ({ children }) => {
+  // @ts-ignore
+  const [selectedPatient, setSelectedPatient] = useState(null);
+  
   return (
-    <AppContext.Provider value={{ data, setData, saveData }}>
+    // @ts-ignore 
+    <AppContext.Provider value={{ selectedPatient, setSelectedPatient }}>
       {children}
     </AppContext.Provider>
   );
-};
+  };
+
 
 
 export const useAppContext = () => {

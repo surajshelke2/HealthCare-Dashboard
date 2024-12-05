@@ -1,4 +1,6 @@
-import React from 'react';
+import { BiSearch } from "react-icons/bi";
+import { CgMore } from "react-icons/cg";
+import { MdMore } from "react-icons/md";
 
 const ProfileCard = ({
   name,
@@ -12,26 +14,27 @@ const ProfileCard = ({
   age: number;
 }) => {
   return (
-    <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-full max-w-md">
+    <div
+      className="flex items-center justify-between p-4 bg-white rounded-md shadow hover:bg-teal-100 cursor-pointer"
+      style={{
+        borderBottom: "1px solid #E5E5E5",
+      }}
+    >
       <div className="flex items-center space-x-4">
-    
         <img
           src={profile}
-          alt={`${name}'s profile`}
+          alt={name}
           className="w-10 h-10 rounded-full object-cover"
         />
-       
         <div>
           <h4 className="text-sm font-bold text-gray-900">{name}</h4>
-          <p className="text-xs text-gray-500">
-            {gender}, {age}
-          </p>
+          <p className="text-xs text-gray-500">{`${gender}, ${age}`}</p>
         </div>
       </div>
-    
-      <div className="text-gray-400 cursor-pointer">...</div>
+      <div>
+        <CgMore className="text-gray-400" />
+      </div>
     </div>
   );
 };
-
-export default ProfileCard;
+export default ProfileCard
