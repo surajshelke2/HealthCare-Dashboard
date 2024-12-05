@@ -1,30 +1,18 @@
-import React from 'react';
+import { useAppContext } from '@/context/AppContext';
+import React, { ReactNode } from 'react';
 
-interface Diagnosis {
-  problem: string;
-  description: string;
-  status: string;
-}
 
 const DiagnosticList: React.FC = () => {
+  // @ts-ignore
+  const {selectedPatient} = useAppContext();
 
-  const diagnosisData: Diagnosis[] = [
-    {
-      problem: 'Hypertension',
-      description: 'Chronic high blood pressure',
-      status: 'Under Observation',
-    },
-    {
-      problem: 'Type 2 Diabetes',
-      description: 'Insulin resistance and elevated blood sugar',
-      status: 'Cured',
-    },
-    {
-      problem: 'Asthma',
-      description: 'Recurrent episodes of bronchial constriction',
-      status: 'Inactive',
-    },
-  ];
+  
+  if (!selectedPatient || !selectedPatient.diagnostic_list.length) {
+    return <div>No data available for the selected patient.</div>;
+  }
+
+  const diagnosisData = selectedPatient.diagnostic_list
+  
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">
@@ -39,20 +27,24 @@ const DiagnosticList: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {diagnosisData.map((diagnosis, index) => (
+            {diagnosisData.map((diagnosis: {
+              [x: string]: ReactNode; problem: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; description: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; status: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined; 
+}, index: React.Key | null | undefined) => (
               <tr
                 key={index}
                 className={`${
+                  //@ts-ignore
                   index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
                 } hover:bg-gray-200 transition-colors`}
               >
-                <td className="px-4 py-2 border border-gray-200">{diagnosis.problem}</td>
+              
+                <td className="px-4 py-2 border border-gray-200">{diagnosis.name}</td>
                 <td className="px-4 py-2 border border-gray-200">{diagnosis.description}</td>
                 <td
                   className={`px-4 py-2 border border-gray-200 font-medium ${
                     diagnosis.status === 'Cured'
                       ? 'text-green-600'
-                      : diagnosis.status === 'Under Observation'
+                      : diagnosis.status === 'Under observation'
                       ? 'text-yellow-600'
                       : 'text-gray-600'
                   }`}

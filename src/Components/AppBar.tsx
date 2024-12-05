@@ -4,7 +4,7 @@ import { IoMdPeople } from "react-icons/io";
 import { MdMessage } from "react-icons/md";
 import { FcSettings } from "react-icons/fc";
 import logo from '../assets/TestLogo.png'
-
+import sinor from '../assets/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc.png'
 
 const AppBar = () => {
  
@@ -53,7 +53,7 @@ const AppBar = () => {
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2">
           <img
-            src="https://via.placeholder.com/40"
+            src={sinor}
             alt="User"
             className="w-10 h-10 rounded-full object-cover"
           />

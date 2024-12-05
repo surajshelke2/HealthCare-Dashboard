@@ -91,12 +91,13 @@ const DiagnosisHistory = () => {
         </div>
 
       
-        <div className="flex flex-col ml-6 p-4 space-y-4">
+        <div className="flex flex-col ml-2 p-4 space-y-4">
           <div className="flex flex-col items-start">
             <h4 className="text-sm font-semibold">Systolic</h4>
             <p className="text-lg font-bold">{blood_pressure.systolic.value}</p>
             <p className="text-sm text-gray-600">{blood_pressure.systolic.levels}</p>
           </div>
+          <hr />
           <div className="flex flex-col items-start">
             <h4 className="text-sm font-semibold">Diastolic</h4>
             <p className="text-lg font-bold">{blood_pressure.diastolic.value}</p>
