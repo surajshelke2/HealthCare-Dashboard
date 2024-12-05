@@ -1,6 +1,6 @@
-import { BiSearch } from "react-icons/bi";
+
 import { CgMore } from "react-icons/cg";
-import { MdMore } from "react-icons/md";
+
 
 const ProfileCard = ({
   name,
