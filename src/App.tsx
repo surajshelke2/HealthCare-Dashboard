@@ -46,7 +46,7 @@ function App() {
   return (
     <>
       <AppBar />
-      <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 h-auto w-[96%] bg-slate-300 mx-auto py-4 px-2">
+      <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 h-auto w-[96%] bg-[#F6F7F8] mx-auto py-4 px-2">
       
         <div className="lg:w-1/4">
           <Patients data={data} />
